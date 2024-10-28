@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confess Anak IT</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            position: relative;
+            text-align: center;
+            border: 2px solid #ff69b4;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 200px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Apakah kamu mencintaiku?</h2>
+        <button class="button" onclick="handleChoice('yes')">Yes</button>
+        <button class="button" id="noButton" onclick="handleChoice('no')">No</button>
+    </div>
+
+    <script>
+        function handleChoice(choice) {
+            if (choice === 'no') {
+                // Pindahkan tombol "No" ke posisi acak
+                moveButton();
+            } else {
+                alert('Aku juga mencintaimu!'); // Pesan untuk pilihan "Yes"
+            }
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            // Mengambil ukuran kontainer
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+
+            // Menghitung posisi acak
+            const randomX = Math.random() * (containerRect.width - buttonRect.width);
+            const randomY = Math.random() * (containerRect.height - buttonRect.height);
+
+            // Mengatur posisi tombol
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
